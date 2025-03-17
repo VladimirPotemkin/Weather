@@ -12,7 +12,7 @@ const weatherClass = computed(() => {
   const condition = weather.value.toLowerCase();
   if (condition.includes('sunny')) return 'sunny';
   if (condition.includes('rain') || condition.includes('drizzle')) return 'rainy';
-  if (condition.includes('cloud') || condition.includes('mist')) return 'cloudly';
+  if (condition.includes('cloud') || condition.includes('mist') || condition.includes('overcast')) return 'cloudly';
   if (condition.includes('snow')) return 'snow';
   return '';
 });
@@ -23,7 +23,7 @@ const getWeather = async () => {
   
   try {
     const response = await fetch(
-      `http://api.weatherapi.com/v1/current.json?key=9ce87d3a70ad4a899fc100156251703&q=${searchQuery.value}`
+      `https://api.weatherapi.com/v1/current.json?key=9ce87d3a70ad4a899fc100156251703&q=${searchQuery.value}`
     );
     
     if (!response.ok) throw new Error('Город не найден');
